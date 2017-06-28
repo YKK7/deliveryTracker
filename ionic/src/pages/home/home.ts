@@ -51,7 +51,7 @@ export class HomePage {
             }
         }
         this.map.panTo(this.driverCenter());
-        this.map.setZoom(13);
+        this.map.setZoom(12);
     }
 
     driverCenter(): google.maps.LatLng {
@@ -85,9 +85,7 @@ export class HomePage {
 
             this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
-        }, (err) => {
-            console.error(err);
-        });
+        }, (err) => console.error(err));
     }
 
     addMarker() {
@@ -100,7 +98,6 @@ export class HomePage {
         });
 
         let content = "<h4>Information!</h4>";
-
         this.addInfoWindow(marker, content);
     }
 
@@ -116,29 +113,29 @@ export class HomePage {
 
     }
 
-    startNavigation() {
+    // startNavigation() {
 
-        navigator.geolocation.getCurrentPosition(position => {
+    //     navigator.geolocation.getCurrentPosition(position => {
 
-            const directionsService = new google.maps.DirectionsService;
-            const directionsDisplay = new google.maps.DirectionsRenderer;
+    //         const directionsService = new google.maps.DirectionsService;
+    //         const directionsDisplay = new google.maps.DirectionsRenderer;
 
-            directionsDisplay.setMap(this.map);
-            directionsDisplay.setPanel(this.directionPanel.nativeElement);
+    //         directionsDisplay.setMap(this.map);
+    //         directionsDisplay.setPanel(this.directionPanel.nativeElement);
 
-            directionsService.route({
-                origin: { lat: position.coords.latitude, lng: position.coords.longitude },
-                destination: { lat: 39.685259, lng: -75.744364 },
-                travelMode: google.maps.TravelMode['DRIVING']
-            }, (res, status) => {
-                if (status === google.maps.DirectionsStatus.OK) {
-                    directionsDisplay.setDirections(res);
-                } else {
-                    console.log("Error Loading Directions");
-                }
-            });
+    //         directionsService.route({
+    //             origin: { lat: position.coords.latitude, lng: position.coords.longitude },
+    //             destination: { lat: 39.685259, lng: -75.744364 },
+    //             travelMode: google.maps.TravelMode['DRIVING']
+    //         }, (res, status) => {
+    //             if (status === google.maps.DirectionsStatus.OK) {
+    //                 directionsDisplay.setDirections(res);
+    //             } else {
+    //                 console.log("Error Loading Directions");
+    //             }
+    //         });
 
-        });
-    }
+    //     });
+    // }
 
 }

@@ -19,8 +19,12 @@ import java.util.List;
 public class UserController {
     private final Logger LOG = LoggerFactory.getLogger(UserController.class);
 
-    @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    public UserController(UserRepository userRepo){
+        this.userRepository = userRepo;
+    }
 
     @RequestMapping(method = RequestMethod.GET)
     @CrossOrigin(origins = {"http://localhost:8100","file://"})
