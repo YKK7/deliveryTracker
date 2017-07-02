@@ -18,7 +18,6 @@ export class HomePage {
     labelIndex: any;
     private users: Array<any>;
 
-
     constructor(public navController: NavController, public geoLocation: Geolocation, public userService: UserService) {
         this.labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         this.labelIndex = 0;
@@ -33,17 +32,14 @@ export class HomePage {
         // this.startNavigation();
     }
 
-
     showDrivers() {
         for (const user of this.users) {
             if (user.type === 2) {
                 let firstName = user.name.substring(0, user.name.indexOf(' '));
-                console.log(firstName);
                 let userLatLng = { lat: user.latitude, lng: user.longitude };
                 let marker = new google.maps.Marker({
                     map: this.map,
                     label: firstName,
-                    // animation: google.maps.Animation.BOUNCE,
                     position: userLatLng
                 });
                 let content = "<h4>" + user.name + "</h4>";
@@ -87,19 +83,19 @@ export class HomePage {
 
         }, (err) => console.error(err));
     }
+    // addMarker() {
 
-    addMarker() {
+    //     let marker = new google.maps.Marker({
+    //         map: this.map,
+    //         label: this.labels[this.labelIndex++ % this.labels.length],
+    //         animation: google.maps.Animation.DROP,
+    //         position: this.map.getCenter()
+    //     });
 
-        let marker = new google.maps.Marker({
-            map: this.map,
-            label: this.labels[this.labelIndex++ % this.labels.length],
-            animation: google.maps.Animation.DROP,
-            position: this.map.getCenter()
-        });
+    //     let content = "<h4>Information!</h4>";
+    //     this.addInfoWindow(marker, content);
+    // }
 
-        let content = "<h4>Information!</h4>";
-        this.addInfoWindow(marker, content);
-    }
 
     addInfoWindow(marker, content) {
 
@@ -112,6 +108,7 @@ export class HomePage {
         });
 
     }
+
 
     // startNavigation() {
 

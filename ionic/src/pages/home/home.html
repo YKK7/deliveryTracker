@@ -1,20 +1,21 @@
-
 <ion-header>
   <ion-navbar color=primary>
     <ion-title>
-      Google Maps
+      Maps
     </ion-title>
     <ion-buttons end>
-      <button ion-button (click)="showDrivers()"><ion-icon name="locate"></ion-icon>Show Drivers</button>
-    </ion-buttons>  
+      <button ion-button (click)="showDrivers()"><ion-icon name="locate"></ion-icon>Drivers</button>
+      <button ion-button (click)="loadMap()"><ion-icon name="backspace"></ion-icon>Clear</button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-    <div #map id="map"></div>
-    <!--<ion-card>
+  <div #map id="map"></div>
+  <!--<ion-card>
       <ion-card-content>
           <div #directionsPanel></div>
       </ion-card-content>
     </ion-card>-->
 </ion-content>
+
